@@ -8,17 +8,21 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="196x196" href="/favicon-196x196.png">
   <link rel="apple-touch-icon" href="/favicon-196x196.png">
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HT31C5LL2Q"></script>
+  <!-- Preconnect to critical domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://wp.edrone.me" crossorigin>
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <!-- Critical fonts — swap to avoid FOIT -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Analytics 4 — deferred to not block rendering -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-HT31C5LL2Q');
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HT31C5LL2Q"></script>
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,9 +34,7 @@
       --yellow-dark: #e6e66e;
       --yellow-hover: #f5f570;
       --yellow-bg: rgba(255,255,140,0.10);
-      --yellow-text: #1E293B; /* dark text on yellow buttons */
-      --teal: #0D9488;
-      --teal-light: #14B8A6;
+      --yellow-text: #1E293B;
       --warm-white: #FAFAF7;
       --white: #FFFFFF;
       --gray-50: #F8FAFC;
@@ -496,6 +498,8 @@
       padding: 72px 32px;
       max-width: 1200px;
       margin: 0 auto;
+      content-visibility: auto;
+      contain-intrinsic-size: 0 800px;
     }
     .preview-label {
       text-align: center;
@@ -620,6 +624,8 @@
       padding: 48px 0;
       background: var(--navy);
       overflow: hidden;
+      content-visibility: auto;
+      contain-intrinsic-size: 0 300px;
     }
 
     .marquee {
@@ -859,7 +865,7 @@
         <span class="browser-dot"></span>
         <span class="browser-url">app.edrone.me/dashboard</span>
       </div>
-      <img src="https://wp.edrone.me/wp-content/uploads/2025/06/Funkcjonalnosci_zamowienia.png" alt="Dashboard edrone — zarządzanie zamówieniami" loading="lazy">
+      <img src="https://wp.edrone.me/wp-content/uploads/2025/06/Funkcjonalnosci_zamowienia.png" alt="Dashboard edrone — zarządzanie zamówieniami" loading="lazy" width="900" height="420" decoding="async">
     </div>
 
     <div class="features-grid">
