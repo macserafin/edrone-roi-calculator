@@ -8,6 +8,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="196x196" href="/favicon-196x196.png">
   <link rel="apple-touch-icon" href="/favicon-196x196.png">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HT31C5LL2Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HT31C5LL2Q');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -991,11 +999,34 @@
 
       resultsEl.classList.add('visible');
 
+      // GA4: track calculator result
+      if (typeof gtag === 'function') {
+        gtag('event', 'calculator_result', {
+          industry: industry,
+          subscribers: subs,
+          monthly_revenue: Math.round(revSubscribers),
+          currency: 'PLN'
+        });
+      }
+
       // Auto-scroll to results
       setTimeout(() => {
         resultsEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }, 100);
     }
+
+    // GA4: track CTA clicks
+    document.querySelectorAll('a[href*="control.edrone.me/register"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          gtag('event', 'cta_click', {
+            link_url: btn.href,
+            link_text: btn.textContent.trim(),
+            page_location: window.location.pathname
+          });
+        }
+      });
+    });
 
     // Count-up animation
     let animFrame;
