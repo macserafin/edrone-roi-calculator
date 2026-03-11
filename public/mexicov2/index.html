@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora ROI | edrone — ¿cuánto ingreso estás perdiendo?</title>
+  <meta name="description" content="Descubre cuánto ingreso adicional puedes generar con la automatización de email marketing de edrone. Calculadora basada en datos reales de más de 1,000 tiendas.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="196x196" href="/favicon-196x196.png">
+  <link rel="apple-touch-icon" href="/favicon-196x196.png">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HT31C5LL2Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HT31C5LL2Q');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #0F172A;
+      --navy-light: #1E293B;
+      --yellow: #ffff8c;
+      --yellow-dark: #e6e66e;
+      --yellow-hover: #f5f570;
+      --yellow-bg: rgba(255,255,140,0.10);
+      --yellow-text: #1E293B; /* dark text on yellow buttons */
+      --teal: #0D9488;
+      --teal-light: #14B8A6;
+      --warm-white: #FAFAF7;
+      --white: #FFFFFF;
+      --gray-50: #F8FAFC;
+      --gray-100: #F1F5F9;
+      --gray-200: #E2E8F0;
+      --gray-300: #CBD5E1;
+      --gray-400: #94A3B8;
+      --gray-500: #64748B;
+      --gray-600: #475569;
+      --gray-900: #1E293B;
+      --radius: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
+      --shadow-xl: 0 20px 48px rgba(0,0,0,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--navy);
+      background: var(--warm-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 32px;
+      background: rgba(15,23,42,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .hdr {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo { text-decoration: none; display: flex; align-items: center; }
+    .logo-svg { height: 20px; width: auto; }
+    .hdr-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow);
+      color: var(--yellow-text);
+      padding: 10px 22px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 100px;
+      transition: all 0.2s;
+    }
+    .hdr-cta:hover {
+      background: var(--yellow-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(255,255,140,0.35);
+    }
+    .hdr-cta svg { width: 14px; height: 14px; }
+
+    /* ── HERO (dark navy) ── */
+    .hero-section {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,140,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -200px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,255,140,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 72px 32px 80px;
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 48px 20px 56px;
+      }
+    }
+
+    .hero-copy { max-width: 520px; }
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--yellow);
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+    .hero-label svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .hero h1 .highlight {
+      color: var(--yellow);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--gray-400);
+      line-height: 1.65;
+      max-width: 440px;
+      margin-bottom: 36px;
+    }
+
+    .hero-proof {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .hero-proof-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-proof-num {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--white);
+      font-variant-numeric: tabular-nums;
+    }
+    .hero-proof-label {
+      font-size: 12px;
+      color: var(--gray-500);
+      font-weight: 500;
+    }
+
+    /* ── CALC CARD (white, floating) ── */
+    .calc-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 32px 32px;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+    }
+    .calc-card-accent {
+      position: absolute;
+      top: 0;
+      left: 32px;
+      right: 32px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--yellow-dark) 0%, var(--yellow) 100%);
+      border-radius: 0 0 2px 2px;
+    }
+
+    .calc-card-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gray-600);
+      margin-bottom: 28px;
+    }
+
+    .field { margin-bottom: 24px; }
+    .field:last-of-type { margin-bottom: 0; }
+    .field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+    }
+    .field select,
+    .field input[type="number"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      transition: all 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    .field select:focus,
+    .field input:focus {
+      outline: none;
+      border-color: var(--yellow-dark);
+      box-shadow: 0 0 0 3px var(--yellow-bg);
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .slider-row input[type="range"] {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      background: var(--gray-200);
+      border-radius: 3px;
+      outline: none;
+    }
+    .slider-row input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--yellow);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(255,255,140,0.4);
+    }
+    .slider-val {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      min-width: 56px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .field-hint {
+      font-size: 12px;
+      color: var(--gray-400);
+      margin-top: 6px;
+    }
+    .field-error {
+      font-size: 12px;
+      color: #EF4444;
+      margin-top: 6px;
+      display: none;
+    }
+    .field-error.show { display: block; }
+
+    /* ── RESULTS ── */
+    .results-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 2;
+      margin-top: -40px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.6s cubic-bezier(0.22,1,0.36,1);
+      pointer-events: none;
+      max-height: 0;
+      overflow: hidden;
+    }
+    .results-wrap.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      max-height: 700px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 960px) {
+      .results-wrap { padding: 0 20px; margin-top: 0; }
+    }
+
+    .results-card {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      box-shadow: var(--shadow-xl);
+    }
+    @media (max-width: 800px) {
+      .results-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 32px 24px;
+      }
+    }
+
+    .result-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--yellow);
+      margin-bottom: 12px;
+    }
+    .result-amount-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .result-plus {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      color: var(--yellow);
+      letter-spacing: -2px;
+    }
+    .result-number {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1;
+      color: var(--white);
+      font-variant-numeric: tabular-nums;
+    }
+    .result-currency {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 600;
+      color: var(--gray-400);
+    }
+    .result-period {
+      font-size: 14px;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+    }
+    .result-yearly {
+      font-size: 16px;
+      color: var(--gray-400);
+      margin-bottom: 28px;
+    }
+    .result-yearly strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .result-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--yellow-text);
+      padding: 16px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .result-cta:hover {
+      background: var(--yellow-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,255,140,0.4);
+    }
+    .result-cta svg { width: 16px; height: 16px; }
+    .result-sub {
+      display: block;
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--gray-500);
+    }
+
+    /* Scenarios */
+    .scenarios { display: flex; flex-direction: column; gap: 20px; }
+    .scenarios-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+    }
+    .scenario-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .scenario-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-400);
+    }
+    .scenario-val {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      font-variant-numeric: tabular-nums;
+    }
+    .scenario-bar {
+      height: 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .scenario-fill {
+      height: 100%;
+      border-radius: 4px;
+      width: 0%;
+      transition: width 1s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .scenario:nth-child(2) .scenario-fill {
+      background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.16));
+    }
+    .scenario:nth-child(3) .scenario-fill {
+      background: linear-gradient(90deg, rgba(255,255,140,0.2), rgba(255,255,140,0.35));
+    }
+    .scenario:nth-child(4) .scenario-fill {
+      background: linear-gradient(90deg, var(--yellow-dark), var(--yellow));
+    }
+
+    .result-context {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray-500);
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── SYSTEM PREVIEW ── */
+    .preview {
+      padding: 72px 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .preview-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gray-500);
+      margin-bottom: 12px;
+    }
+    .preview-title {
+      text-align: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .preview-sub {
+      text-align: center;
+      font-size: 16px;
+      color: var(--gray-500);
+      max-width: 520px;
+      margin: 0 auto 48px;
+    }
+
+    /* Browser mockup */
+    .browser-mockup {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+      max-width: 900px;
+      margin: 0 auto 48px;
+    }
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 18px;
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gray-300);
+    }
+    .browser-dot:nth-child(1) { background: #FF5F57; }
+    .browser-dot:nth-child(2) { background: #FEBC2E; }
+    .browser-dot:nth-child(3) { background: #28C840; }
+    .browser-url {
+      flex: 1;
+      margin-left: 12px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: var(--gray-400);
+      font-family: 'Inter', monospace;
+    }
+    .browser-mockup img {
+      width: 100%;
+      display: block;
+      max-height: 420px;
+      object-fit: cover;
+      object-position: top left;
+    }
+
+    /* Feature highlights grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 768px) {
+      .features-grid { grid-template-columns: 1fr; gap: 20px; }
+    }
+    .feature-item {
+      padding: 28px 24px;
+      border-radius: 16px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      transition: all 0.25s;
+    }
+    .feature-item:hover {
+      border-color: var(--gray-300);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+    .feature-icon--yellow { background: var(--yellow-bg); background-color: rgba(255,255,140,0.2); }
+    .feature-icon--blue { background: rgba(59,130,246,0.08); }
+    .feature-icon--green { background: rgba(16,185,129,0.08); }
+    .feature-item h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .feature-item p {
+      font-size: 13px;
+      color: var(--gray-500);
+      line-height: 1.55;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .proof {
+      padding: 48px 0;
+      background: var(--navy);
+      overflow: hidden;
+    }
+
+    .marquee {
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      margin-bottom: 36px;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 64px;
+      align-items: center;
+      width: max-content;
+      animation: marqueeScroll 40s linear infinite;
+    }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .marquee-track img {
+      height: 22px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.3;
+      transition: opacity 0.3s;
+    }
+    .marquee-track img:hover { opacity: 0.6; }
+
+    .proof-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .proof-stat { text-align: center; }
+    .proof-stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      display: block;
+      font-variant-numeric: tabular-nums;
+      color: var(--white);
+    }
+    .proof-stat:nth-child(1) .proof-stat-num { color: var(--yellow); }
+    .proof-stat:nth-child(2) .proof-stat-num { color: var(--yellow-dark); }
+    .proof-stat-label {
+      font-size: 12px;
+      color: var(--gray-500);
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 24px 32px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--gray-400);
+      border-top: 1px solid var(--gray-200);
+      background: var(--warm-white);
+    }
+    footer a {
+      color: var(--gray-500);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--navy); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-copy > * { opacity: 0; animation: fadeUp 0.6s forwards; }
+    .hero-copy > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-copy > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-copy > *:nth-child(3) { animation-delay: 0.3s; }
+    .hero-copy > *:nth-child(4) { animation-delay: 0.4s; }
+    .calc-card { opacity: 0; animation: fadeUp 0.7s 0.25s forwards; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 36px 16px 40px; }
+      .hero-proof { gap: 20px; }
+      .calc-card { padding: 28px 20px 24px; }
+      .results-card { padding: 24px 16px; }
+      .preview { padding: 48px 16px; }
+      .proof-stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="hdr">
+      <a href="https://www.edrone.me" class="logo" target="_blank" rel="noopener">
+        <svg class="logo-svg" viewBox="0 0 1189.5 267.3" xmlns="http://www.w3.org/2000/svg">
+          <g fill="#fafafa"><rect width="320.2" height="53.3"/><rect x=".1" y="214" width="320.2" height="53.3"/><rect x=".1" y="107" width="320.2" height="53.3"/></g>
+          <g fill="#fafafa"><path d="M544.3 91.2c29.4 0 43.4 17.5 43.4 42 0 9.2-3.6 20.7-3.6 20.7h-82.9c-.4 2.2-.7 4.5-.7 6.7 0 16.8 11 30.8 32.3 30.8 19.5 0 36.2-13.3 36.2-13.3l6.3 17.3s-18.9 14.8-43.4 14.8c-33.2 0-53.7-20.2-53.7-48.5 0-37.8 27.8-70.5 66-70.5zm21.2 46.3s.4-2.5.4-6.1c0-15.3-9.2-22.9-22-22.9-16.6 0-32.1 11-39.1 29h60.7zM665 91.2c13.9 0 27.9 6.1 33.2 19.1h.4s0-4.3.9-8.3l10.3-53h21.8l-30.8 158.6H680l2.2-10.8c.7-4.5 2-8.3 2-8.3h-.4c-7.6 11.7-21.6 21.8-38.9 21.8-27.4 0-42.9-18.2-42.9-46.5 0-43.1 30.1-72.6 62.9-72.6zm-14.9 100.2c23.8 0 41.6-26.3 41.6-52.3 0-15.7-7.6-28.8-25.4-28.8-19.5 0-42 19.3-42 51.9.1 18.2 10 29.2 25.8 29.2zM752.8 93.9h21.1l-4 19.8c-.9 4.7-2.2 9.2-2.2 9.2h.2c7.6-16.2 23.1-30.3 41.1-30.3 2.9 0 5.4.2 6.7.4l-4.3 21.6c-1.6-.5-3.4-.7-6.1-.7-20.9 0-39.8 25.8-44.9 52.3l-7.9 41.3h-21.8l21.1-113.6zM879.7 91.2c31.7 0 53.9 20.2 53.9 49.6 0 39.5-35 69.4-70.1 69.4-31.9 0-54.1-20.4-54.1-50.1 0-38.9 34.6-68.9 70.3-68.9zm-15.9 100.2c23.4 0 47.6-21.3 47.6-49.4 0-18.9-13.3-31.9-31.9-31.9-24 0-47.8 21.3-47.8 49.2-.1 19.1 13.2 32.1 32.1 32.1zM964.9 93.9h21.3l-2.5 13.3c-1.1 5.4-3.1 10.8-3.1 10.8h.4c6.1-11.2 24.3-26.7 47-26.7 20.2 0 33.2 9.4 33.2 30.1 0 4.3-.7 9.2-1.6 14.4l-13.9 71.9h-21.8l13-67.2c.9-4.7 1.6-9 1.6-12.8 0-11.2-6.5-16.4-16.8-16.4-22.9 0-42.5 20.7-47.2 44.5l-9.9 51.9h-21.8l22.1-113.8zM1146.1 91.2c29.4 0 43.4 17.5 43.4 42 0 9.2-3.6 20.7-3.6 20.7H1103c-.4 2.2-.7 4.5-.7 6.7 0 16.8 11 30.8 32.3 30.8 19.5 0 36.2-13.3 36.2-13.3l6.3 17.3s-18.9 14.8-43.4 14.8c-33.2 0-53.7-20.2-53.7-48.5 0-37.8 27.9-70.5 66.1-70.5zm21.2 46.3s.4-2.5.4-6.1c0-15.3-9.2-22.9-22-22.9-16.6 0-32.1 11-39.1 29h60.7z"/></g>
+        </svg>
+      </a>
+      <a href="https://control.edrone.me/register" class="hdr-cta" target="_blank" rel="noopener">
+        Prueba gratis
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO (navy background) -->
+  <div class="hero-section">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="hero-label">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 1v14M1 8h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Calculadora ROI edrone
+        </p>
+        <h1>¿Cuánto ingreso<br><span class="highlight">pierde</span> tu tienda?</h1>
+        <p class="hero-sub">Selecciona tu industria e ingresa el número de suscriptores. Te mostramos el monto exacto que estás dejando sobre la mesa — basado en datos de&nbsp;1&nbsp;000+ tiendas.</p>
+        <div class="hero-proof">
+          <div class="hero-proof-item">
+            <span class="hero-proof-num">1 000+</span>
+            <span class="hero-proof-label">tiendas en nuestra base</span>
+          </div>
+          <div class="hero-proof-item">
+            <span class="hero-proof-num">16</span>
+            <span class="hero-proof-label">industrias e&#8209;commerce</span>
+          </div>
+          <div class="hero-proof-item">
+            <span class="hero-proof-num">7x</span>
+            <span class="hero-proof-label">ROI en 3 meses</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALCULATOR CARD (white, floating) -->
+      <div class="calc-card">
+        <div class="calc-card-accent"></div>
+        <p class="calc-card-label">Calcula gratis</p>
+
+        <div class="field">
+          <label for="industry">Industria de tu tienda</label>
+          <select id="industry">
+            <option value="">Selecciona industria...</option>
+            <option value="ELECTRONICS">Electr&oacute;nica</option>
+            <option value="SPORT_EQUIPMENT">Equipo deportivo</option>
+            <option value="EQUIPMENT">Equipamiento / Electrodom&eacute;sticos</option>
+            <option value="VEHICLES_AND_PARTS">Veh&iacute;culos y refacciones</option>
+            <option value="HEALTH_AND_BEAUTY">Salud y belleza</option>
+            <option value="ANIMALS_AND_PET_SUPPLIES">Mascotas y accesorios</option>
+            <option value="FOOD_DRINK_AND_TOBACCO">Alimentos y bebidas</option>
+            <option value="KIDS_AND_BABIES">Ni&ntilde;os y beb&eacute;s</option>
+            <option value="HOME_AND_GARDEN">Hogar y jard&iacute;n</option>
+            <option value="GAMES_AND_TOYS">Juegos y juguetes</option>
+            <option value="TRAVEL_ACCESSORIES">Accesorios de viaje</option>
+            <option value="JEWELRY">Joyer&iacute;a</option>
+            <option value="CLOTHES_AND_ACCESSORIES">Ropa y accesorios</option>
+            <option value="FURNITURE">Muebles</option>
+            <option value="HEALTH_AND_WELLNESS">Salud y bienestar</option>
+            <option value="OTHER">Otra industria</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="subscribers">N&uacute;mero de suscriptores email</label>
+          <input type="number" id="subscribers" placeholder="ej. 5,000" min="100" max="500000" step="100">
+          <div class="slider-row">
+            <input type="range" id="subscribersRange" min="500" max="100000" step="500" value="5000">
+            <span class="slider-val" id="sliderVal">5,000</span>
+          </div>
+          <p class="field-hint" id="fieldHint">Escribe o usa el control deslizante</p>
+          <p class="field-error" id="fieldError">El m&iacute;nimo de suscriptores es 100</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- RESULTS -->
+  <section class="results-wrap" id="results">
+    <div class="results-card">
+      <div class="result-left">
+        <p class="result-eyebrow">Tu ingreso adicional</p>
+        <div class="result-amount-row">
+          <span class="result-plus">+</span>
+          <span class="result-number" id="monthlyRevenue">0</span>
+          <span class="result-currency">MXN</span>
+        </div>
+        <p class="result-period">de ingreso adicional / mes</p>
+        <p class="result-yearly">eso son <strong id="yearlyRevenue">$0 MXN</strong> al a&ntilde;o</p>
+
+        <a href="https://control.edrone.me/register" class="result-cta" target="_blank" rel="noopener">
+          Empieza a recuperar ese dinero
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <span class="result-sub">Integraci&oacute;n en 5 min &middot; Sin c&oacute;digo &middot; Sin tarjeta</span>
+      </div>
+
+      <div class="scenarios">
+        <p class="scenarios-label">Escenarios de ingreso</p>
+        <div class="scenario">
+          <div class="scenario-header">
+            <span class="scenario-name">Automatizaciones email</span>
+            <span class="scenario-val" id="s1val">$0 MXN</span>
+          </div>
+          <div class="scenario-bar"><div class="scenario-fill" id="s1bar"></div></div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-header">
+            <span class="scenario-name">+ Toda la base de contactos</span>
+            <span class="scenario-val" id="s2val">$0 MXN</span>
+          </div>
+          <div class="scenario-bar"><div class="scenario-fill" id="s2bar"></div></div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-header">
+            <span class="scenario-name">+ SMS marketing</span>
+            <span class="scenario-val" id="s3val">$0 MXN</span>
+          </div>
+          <div class="scenario-bar"><div class="scenario-fill" id="s3bar"></div></div>
+        </div>
+      </div>
+
+      <p class="result-context">Basado en la mediana de resultados de 1,000+ tiendas edrone en tu industria. Datos reales, no proyecciones.</p>
+    </div>
+  </section>
+
+  <!-- SYSTEM PREVIEW -->
+  <section class="preview">
+    <p class="preview-label">As&iacute; se ve edrone</p>
+    <h2 class="preview-title">20+ automatizaciones que trabajan por ti</h2>
+    <p class="preview-sub">Escenarios listos para activar en minutos. La IA escribe tus newsletters. Resultados en tiempo real.</p>
+
+    <div class="browser-mockup">
+      <div class="browser-bar">
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+        <span class="browser-dot"></span>
+        <span class="browser-url">app.edrone.me/dashboard</span>
+      </div>
+      <img src="https://wp.edrone.me/wp-content/uploads/2025/06/Funkcjonalnosci_zamowienia.png" alt="Dashboard edrone — zarządzanie zamówieniami" loading="lazy">
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon feature-icon--yellow">🛒</div>
+        <h3>Recupera carritos abandonados</h3>
+        <p>Recuperaci&oacute;n autom&aacute;tica de carritos por email, SMS y WhatsApp. Los clientes reportan 3x m&aacute;s pedidos solo con SMS. Open rate SMS: 95–98%.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon feature-icon--blue">⚡</div>
+        <h3>20+ automatizaciones listas</h3>
+        <p>Activa en minutos: win-back, recomendaciones post-compra, recordatorios de productos vistos, cupones din&aacute;micos. ROI en solo 7 d&iacute;as.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon feature-icon--green">🤖</div>
+        <h3>La IA crea newsletters en segundos</h3>
+        <p>La IA genera newsletters de productos basados en tu tienda — solo haz clic en enviar. Multichannel genera hasta 35% m&aacute;s pedidos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="proof">
+    <div class="marquee">
+      <div class="marquee-track">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_rylko-1.png" alt="Ryłko" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/mosquito.svg" alt="Mosquito" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/organique.svg" alt="Organique" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/o-bag.svg" alt="O bag" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_bielenda-1.png" alt="Bielenda" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_reporter-1.png" alt="Reporter" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_abra-1.png" alt="Abra" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_ispot-1.png" alt="iSpot" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci._swisspng-1.png" alt="Swiss" loading="lazy">
+        <!-- Duplicate for seamless loop -->
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_rylko-1.png" alt="Ryłko" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/mosquito.svg" alt="Mosquito" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/organique.svg" alt="Organique" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/o-bag.svg" alt="O bag" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_bielenda-1.png" alt="Bielenda" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_reporter-1.png" alt="Reporter" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_abra-1.png" alt="Abra" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_ispot-1.png" alt="iSpot" loading="lazy">
+        <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci._swisspng-1.png" alt="Swiss" loading="lazy">
+      </div>
+    </div>
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <span class="proof-stat-num">4.9/5</span>
+        <span class="proof-stat-label">Rating G2</span>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-stat-num">1,000+</span>
+        <span class="proof-stat-label">Tiendas activas</span>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-stat-num">7x</span>
+        <span class="proof-stat-label">ROI promedio</span>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-stat-num">25+</span>
+        <span class="proof-stat-label">Integraciones nativas</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 <a href="https://www.edrone.me" target="_blank" rel="noopener">edrone</a> &middot; CRM y Marketing Automation para e-commerce</p>
+  </footer>
+
+  <script>
+    // Industry benchmark data (converted to MXN, ~5x PLN rate)
+    const INDUSTRY_DATA = {
+      ELECTRONICS:              { revPer1000: 117109.00, revUnknown1000: 87831.75, revNewsletter1000: 11710.90 },
+      SPORT_EQUIPMENT:          { revPer1000: 99959.00,  revUnknown1000: 74969.25, revNewsletter1000: 9995.90  },
+      EQUIPMENT:                { revPer1000: 63762.00,  revUnknown1000: 47821.50, revNewsletter1000: 6376.20  },
+      VEHICLES_AND_PARTS:       { revPer1000: 127961.00, revUnknown1000: 95970.75, revNewsletter1000: 12796.10 },
+      HEALTH_AND_BEAUTY:        { revPer1000: 33068.00,  revUnknown1000: 24801.00, revNewsletter1000: 3306.80  },
+      ANIMALS_AND_PET_SUPPLIES: { revPer1000: 27860.00,  revUnknown1000: 20895.00, revNewsletter1000: 2786.00  },
+      FOOD_DRINK_AND_TOBACCO:   { revPer1000: 85440.00,  revUnknown1000: 64080.00, revNewsletter1000: 8544.00  },
+      KIDS_AND_BABIES:          { revPer1000: 33379.00,  revUnknown1000: 25034.25, revNewsletter1000: 3337.90  },
+      HOME_AND_GARDEN:          { revPer1000: 57142.00,  revUnknown1000: 42856.50, revNewsletter1000: 5714.20  },
+      GAMES_AND_TOYS:           { revPer1000: 32241.00,  revUnknown1000: 24180.75, revNewsletter1000: 3224.10  },
+      TRAVEL_ACCESSORIES:       { revPer1000: 43044.00,  revUnknown1000: 32283.00, revNewsletter1000: 4304.40  },
+      JEWELRY:                  { revPer1000: 60634.00,  revUnknown1000: 45475.50, revNewsletter1000: 6063.40  },
+      CLOTHES_AND_ACCESSORIES:  { revPer1000: 32983.00,  revUnknown1000: 24737.25, revNewsletter1000: 3298.30  },
+      FURNITURE:                { revPer1000: 48092.00,  revUnknown1000: 36069.00, revNewsletter1000: 4809.20  },
+      HEALTH_AND_WELLNESS:      { revPer1000: 31304.00,  revUnknown1000: 23478.00, revNewsletter1000: 3130.40  },
+      OTHER:                    { revPer1000: 48092.00,  revUnknown1000: 36069.00, revNewsletter1000: 4809.20  }
+    };
+
+    const fmt = n => '$' + Math.round(n).toLocaleString('es-MX');
+
+    const industryEl = document.getElementById('industry');
+    const subscribersEl = document.getElementById('subscribers');
+    const rangeEl = document.getElementById('subscribersRange');
+    const sliderValEl = document.getElementById('sliderVal');
+    const resultsEl = document.getElementById('results');
+    const fieldError = document.getElementById('fieldError');
+
+    rangeEl.addEventListener('input', () => {
+      const v = parseInt(rangeEl.value);
+      subscribersEl.value = v;
+      sliderValEl.textContent = fmt(v);
+      fieldError.classList.remove('show');
+      calculate();
+    });
+
+    subscribersEl.addEventListener('input', () => {
+      const v = parseInt(subscribersEl.value) || 0;
+      if (v >= 500 && v <= 100000) rangeEl.value = v;
+      sliderValEl.textContent = fmt(v || 0);
+      if (v > 0 && v < 100) { fieldError.classList.add('show'); }
+      else { fieldError.classList.remove('show'); }
+      calculate();
+    });
+
+    industryEl.addEventListener('change', calculate);
+
+    function calculate() {
+      const industry = industryEl.value;
+      const subs = parseInt(subscribersEl.value) || parseInt(rangeEl.value) || 0;
+
+      if (!industry || subs < 100) { resultsEl.classList.remove('visible'); return; }
+
+      const data = INDUSTRY_DATA[industry];
+      if (!data) return;
+
+      const rev1 = data.revPer1000 * (subs / 1000);
+      const rev2 = rev1 + (data.revUnknown1000 * (subs * 2.5 / 1000));
+      const revNL = data.revNewsletter1000 * (subs / 1000) * 2;
+      const rev3 = (rev2 + revNL) * 1.15;
+
+      animateNumber('monthlyRevenue', rev1);
+      document.getElementById('yearlyRevenue').textContent = fmt(rev1 * 12) + ' MXN';
+
+      document.getElementById('s1val').textContent = fmt(rev1) + ' MXN';
+      document.getElementById('s2val').textContent = fmt(rev2) + ' MXN';
+      document.getElementById('s3val').textContent = fmt(rev3) + ' MXN';
+
+      const maxRev = rev3;
+      setTimeout(() => { document.getElementById('s1bar').style.width = Math.max(8, (rev1 / maxRev) * 100) + '%'; }, 100);
+      setTimeout(() => { document.getElementById('s2bar').style.width = Math.max(8, (rev2 / maxRev) * 100) + '%'; }, 250);
+      setTimeout(() => { document.getElementById('s3bar').style.width = '100%'; }, 400);
+
+      resultsEl.classList.add('visible');
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'calculator_result', { industry, subscribers: subs, monthly_revenue: Math.round(rev1), currency: 'MXN' });
+      }
+
+      setTimeout(() => { resultsEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 150);
+    }
+
+    document.querySelectorAll('a[href*="control.edrone.me/register"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          gtag('event', 'cta_click', { link_url: btn.href, link_text: btn.textContent.trim(), page_location: window.location.pathname });
+        }
+      });
+    });
+
+    let animFrame;
+    function animateNumber(elId, target) {
+      const el = document.getElementById(elId);
+      const start = parseInt(el.textContent.replace(/\s/g, '')) || 0;
+      const duration = 700;
+      const startTime = performance.now();
+
+      if (animFrame) cancelAnimationFrame(animFrame);
+
+      function tick(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = fmt(Math.round(start + (target - start) * eased));
+        if (progress < 1) animFrame = requestAnimationFrame(tick);
+      }
+      animFrame = requestAnimationFrame(tick);
+    }
+
+    if (subscribersEl.value) calculate();
+  </script>
+
+</body>
+</html>
