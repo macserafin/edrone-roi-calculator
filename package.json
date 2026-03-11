@@ -1,0 +1,12 @@
+{
+  "name": "edrone-roi-calculator",
+  "version": "1.0.0",
+  "description": "edrone ROI Calculator Landing Page",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

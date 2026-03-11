@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator ROI | edrone — ile przychodu tracisz?</title>
+  <meta name="description" content="Sprawdź ile dodatkowego przychodu możesz generować z automatyzacji email marketingu z edrone. Kalkulator oparty na danych z Twojej branży.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --yellow: #FFFF00;
+      --yellow-soft: #FFFF8C;
+      --yellow-bg: #FFFDE6;
+      --black: #1a1a1a;
+      --gray: #666;
+      --gray-light: #999;
+      --white: #ffffff;
+      --bar-dark: #1a3a4a;
+      --bar-gold: #d4a843;
+      --max-w: 840px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 0 24px;
+    }
+    .header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+      color: var(--black);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--black);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-icon svg { width: 16px; height: 16px; }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--black);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .header-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 24px 60px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--yellow-bg) 0%, var(--white) 100%);
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: -10%;
+      width: 50%;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(255,255,0,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.2;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 strong {
+      font-weight: 700;
+      font-style: normal;
+      font-family: 'Inter', sans-serif;
+    }
+    .hero p {
+      color: var(--gray);
+      font-size: 18px;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+    .scroll-hint {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray-light);
+      font-size: 13px;
+      text-decoration: none;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint svg { width: 20px; height: 20px; opacity: 0.5; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* ── CALCULATOR ── */
+    .calculator {
+      padding: 60px 24px 80px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .calc-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray-light);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .calc-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 48px;
+      letter-spacing: -0.5px;
+    }
+
+    .calc-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 600px) {
+      .calc-form { grid-template-columns: 1fr; }
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+    .form-group select,
+    .form-group input[type="number"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e5e5e5;
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    .form-group select:focus,
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--black);
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .slider-row input[type="range"] {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      background: #e5e5e5;
+      border-radius: 3px;
+      outline: none;
+    }
+    .slider-row input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      background: var(--black);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .slider-val {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      min-width: 60px;
+      text-align: right;
+    }
+
+    /* ── RESULTS ── */
+    .results {
+      background: var(--yellow-bg);
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+    .results.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .result-main {
+      margin-bottom: 8px;
+    }
+    .result-number {
+      font-size: clamp(40px, 8vw, 64px);
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      color: var(--black);
+    }
+    .result-currency {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 600;
+      color: var(--black);
+    }
+    .result-period {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+    .result-yearly {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+    .result-yearly span {
+      color: var(--black);
+    }
+
+    /* ── BAR CHART ── */
+    .chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 20px;
+      height: 200px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 600px) {
+      .chart { gap: 12px; height: 160px; }
+    }
+    .chart-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      max-width: 140px;
+    }
+    .bar-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+      white-space: nowrap;
+    }
+    .bar-fill {
+      width: 100%;
+      border-radius: 8px 8px 4px 4px;
+      min-height: 20px;
+      transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .bar-fill.dark { background: var(--bar-dark); }
+    .bar-fill.gold { background: var(--bar-gold); }
+    .bar-label {
+      font-size: 11px;
+      color: var(--gray);
+      text-align: center;
+      line-height: 1.3;
+      max-width: 120px;
+    }
+
+    .result-context {
+      font-size: 14px;
+      color: var(--gray);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.5;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--black);
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .cta-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-1px);
+    }
+    .cta-btn svg { width: 18px; height: 18px; }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      padding: 60px 24px;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+    }
+    .social-proof p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 32px;
+    }
+    .logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 32px 48px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      opacity: 0.5;
+    }
+    .logos span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── BOTTOM CTA ── */
+    .bottom-cta {
+      padding: 80px 24px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--white) 0%, var(--yellow-bg) 100%);
+    }
+    .bottom-cta h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 400;
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+    .bottom-cta p {
+      color: var(--gray);
+      font-size: 16px;
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .bottom-cta .sub-note {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--gray-light);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--gray-light);
+      border-top: 1px solid #f0f0f0;
+    }
+    .footer a {
+      color: var(--gray);
+      text-decoration: none;
+    }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="https://www.edrone.me/pl" class="logo" target="_blank" rel="noopener">
+        <span class="logo-icon">
+          <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" fill="#fff"/><rect x="9" y="2" width="5" height="5" rx="1" fill="#fff"/><rect x="2" y="9" width="5" height="5" rx="1" fill="#fff"/></svg>
+        </span>
+        edrone
+      </a>
+      <a href="https://app.edrone.me/register" class="header-cta" target="_blank" rel="noopener">
+        Wypróbuj za darmo
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Ile przychodu tracisz bez <strong>automatyzacji?</strong></h1>
+    <p>Sprawdź, ile dodatkowego przychodu możesz generować z email marketingu — bazując na realnych danych z Twojej branży e-commerce.</p>
+    <a href="#kalkulator" class="scroll-hint">
+      Oblicz swój potencjał
+      <svg viewBox="0 0 20 20" fill="none"><path d="M10 4v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="calculator" id="kalkulator">
+    <span class="calc-label">Kalkulator ROI</span>
+    <h2 class="calc-title">Policz swój potencjalny przychód</h2>
+
+    <div class="calc-form">
+      <div class="form-group">
+        <label for="industry">Branża e-commerce</label>
+        <select id="industry">
+          <option value="">Wybierz branżę...</option>
+          <option value="ELECTRONICS">Elektronika</option>
+          <option value="SPORT_EQUIPMENT">Sprzęt sportowy</option>
+          <option value="EQUIPMENT">Wyposażenie / RTV AGD</option>
+          <option value="VEHICLES_AND_PARTS">Samochody i części</option>
+          <option value="HEALTH_AND_BEAUTY">Zdrowie i uroda</option>
+          <option value="ANIMALS_AND_PET_SUPPLIES">Zwierzęta i akcesoria</option>
+          <option value="FOOD_DRINK_AND_TOBACCO">Żywność i napoje</option>
+          <option value="KIDS_AND_BABIES">Dzieci i niemowlęta</option>
+          <option value="HOME_AND_GARDEN">Dom i ogród</option>
+          <option value="GAMES_AND_TOYS">Gry i zabawki</option>
+          <option value="TRAVEL_ACCESSORIES">Akcesoria podróżne</option>
+          <option value="JEWELRY">Biżuteria</option>
+          <option value="CLOTHES_AND_ACCESSORIES">Odzież i akcesoria</option>
+          <option value="FURNITURE">Meble</option>
+          <option value="HEALTH_AND_WELLNESS">Zdrowie i wellness</option>
+          <option value="OTHER">Inna branża</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="subscribers">Liczba subskrybentów email</label>
+        <input type="number" id="subscribers" placeholder="np. 5000" min="100" max="500000" step="100">
+        <div class="slider-row">
+          <input type="range" id="subscribersRange" min="500" max="100000" step="500" value="5000">
+          <span class="slider-val" id="sliderVal">5 000</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results" id="results">
+      <div class="result-main">
+        <span class="result-number" id="monthlyRevenue">0</span>
+        <span class="result-currency"> zł</span>
+      </div>
+      <p class="result-period">potencjalnego przychodu miesięcznie</p>
+      <p class="result-yearly">to <span id="yearlyRevenue">0 zł</span> rocznie</p>
+
+      <div class="chart" id="chart">
+        <div class="chart-bar">
+          <span class="bar-value" id="bar1val">0 zł</span>
+          <div class="bar-fill dark" id="bar1" style="height: 0px;"></div>
+          <span class="bar-label">Subskrybenci<br>(automaty)</span>
+        </div>
+        <div class="chart-bar">
+          <span class="bar-value" id="bar2val">0 zł</span>
+          <div class="bar-fill dark" id="bar2" style="height: 0px;"></div>
+          <span class="bar-label">Pełna baza<br>(+ nieznani)</span>
+        </div>
+        <div class="chart-bar">
+          <span class="bar-value" id="bar3val">0 zł</span>
+          <div class="bar-fill gold" id="bar3" style="height: 0px;"></div>
+          <span class="bar-label">Pełna baza<br>+ SMS</span>
+        </div>
+      </div>
+
+      <p class="result-context">Tyle dodatkowego przychodu możesz generować z automatyzacji email marketingu z edrone — bazując na danych z ponad 1000 sklepów w Twojej branży.</p>
+
+      <a href="https://app.edrone.me/register" class="cta-btn" target="_blank" rel="noopener">
+        Zacznij generować ten przychód
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="social-proof">
+    <p>Zaufało nam ponad 1 000 sklepów e-commerce w Polsce i na świecie</p>
+    <div class="logos">
+      <span>Ryłko</span>
+      <span>Mosquito</span>
+      <span>Organique</span>
+      <span>O bag</span>
+      <span>Bielenda</span>
+      <span>Reporter</span>
+      <span>Abra</span>
+      <span>iSpot</span>
+      <span>Swiss</span>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="bottom-cta">
+    <h2>Nie trać więcej przychodów</h2>
+    <p>Klienci edrone raportują zwrot z inwestycji już po 7 dniach i nawet 7x ROI do 3. miesiąca.</p>
+    <a href="https://app.edrone.me/register" class="cta-btn" target="_blank" rel="noopener">
+      Załóż darmowe konto
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <p class="sub-note">Karta kredytowa nie jest wymagana</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2026 <a href="https://www.edrone.me/pl" target="_blank" rel="noopener">edrone</a> &middot; CRM i Marketing Automation dla e-commerce</p>
+  </footer>
+
+  <script>
+    // ── Industry benchmark data (revenue per 1000 emails sent, in PLN) ──
+    const INDUSTRY_DATA = {
+      ELECTRONICS:              { revPer1000: 23421.80, aov: 928.39 },
+      SPORT_EQUIPMENT:          { revPer1000: 19991.80, aov: 798.28 },
+      EQUIPMENT:                { revPer1000: 12752.40, aov: 536.20 },
+      VEHICLES_AND_PARTS:       { revPer1000: 25592.20, aov: 1080.39 },
+      HEALTH_AND_BEAUTY:        { revPer1000: 6613.60,  aov: 260.36 },
+      ANIMALS_AND_PET_SUPPLIES: { revPer1000: 5572.00,  aov: 238.85 },
+      FOOD_DRINK_AND_TOBACCO:   { revPer1000: 17088.00, aov: 738.09 },
+      KIDS_AND_BABIES:          { revPer1000: 6675.80,  aov: 290.37 },
+      OTHER:                    { revPer1000: 35331.60, aov: 1563.49 },
+      HOME_AND_GARDEN:          { revPer1000: 11428.40, aov: 608.74 },
+      GAMES_AND_TOYS:           { revPer1000: 6448.20,  aov: 289.13 },
+      TRAVEL_ACCESSORIES:       { revPer1000: 8608.80,  aov: 410.86 },
+      JEWELRY:                  { revPer1000: 12126.80, aov: 579.18 },
+      CLOTHES_AND_ACCESSORIES:  { revPer1000: 6596.60,  aov: 327.44 },
+      FURNITURE:                { revPer1000: 9618.40,  aov: 478.59 },
+      HEALTH_AND_WELLNESS:      { revPer1000: 6260.80,  aov: 348.78 }
+    };
+
+    const fmt = n => Math.round(n).toLocaleString('pl-PL');
+
+    const industryEl = document.getElementById('industry');
+    const subscribersEl = document.getElementById('subscribers');
+    const rangeEl = document.getElementById('subscribersRange');
+    const sliderVal = document.getElementById('sliderVal');
+    const resultsEl = document.getElementById('results');
+
+    // Sync slider ↔ input
+    rangeEl.addEventListener('input', () => {
+      const v = parseInt(rangeEl.value);
+      subscribersEl.value = v;
+      sliderVal.textContent = fmt(v);
+      calculate();
+    });
+    subscribersEl.addEventListener('input', () => {
+      const v = parseInt(subscribersEl.value) || 0;
+      if (v >= 500 && v <= 100000) rangeEl.value = v;
+      sliderVal.textContent = fmt(v);
+      calculate();
+    });
+    industryEl.addEventListener('change', calculate);
+
+    function calculate() {
+      const industry = industryEl.value;
+      const subs = parseInt(subscribersEl.value) || parseInt(rangeEl.value) || 0;
+
+      if (!industry || subs < 100) {
+        resultsEl.classList.remove('visible');
+        return;
+      }
+
+      const data = INDUSTRY_DATA[industry];
+      if (!data) return;
+
+      // Scenario 1: Revenue from subscribers only (automation)
+      const revSubscribers = data.revPer1000 * (subs / 1000);
+
+      // Scenario 2: Revenue from full database (+30% from unknown contacts)
+      const revFullBase = revSubscribers * 1.30;
+
+      // Scenario 3: Revenue from full database + SMS (+15% SMS uplift)
+      const revFullSMS = revFullBase * 1.15;
+
+      // Display primary result (scenario 1 = conservative)
+      animateNumber('monthlyRevenue', revSubscribers);
+      document.getElementById('yearlyRevenue').textContent = fmt(revSubscribers * 12) + ' zł';
+
+      // Bar chart
+      const maxRev = revFullSMS;
+      const maxH = 160;
+      const h1 = Math.max(20, (revSubscribers / maxRev) * maxH);
+      const h2 = Math.max(20, (revFullBase / maxRev) * maxH);
+      const h3 = maxH;
+
+      document.getElementById('bar1').style.height = h1 + 'px';
+      document.getElementById('bar2').style.height = h2 + 'px';
+      document.getElementById('bar3').style.height = h3 + 'px';
+      document.getElementById('bar1val').textContent = fmt(revSubscribers) + ' zł';
+      document.getElementById('bar2val').textContent = fmt(revFullBase) + ' zł';
+      document.getElementById('bar3val').textContent = fmt(revFullSMS) + ' zł';
+
+      resultsEl.classList.add('visible');
+    }
+
+    // Count-up animation
+    let animFrame;
+    function animateNumber(elId, target) {
+      const el = document.getElementById(elId);
+      const start = parseInt(el.textContent.replace(/\s/g, '')) || 0;
+      const duration = 600;
+      const startTime = performance.now();
+
+      if (animFrame) cancelAnimationFrame(animFrame);
+
+      function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        const current = Math.round(start + (target - start) * eased);
+        el.textContent = fmt(current);
+        if (progress < 1) animFrame = requestAnimationFrame(tick);
+      }
+      animFrame = requestAnimationFrame(tick);
+    }
+
+    // Auto-calculate on load if values exist
+    if (subscribersEl.value) calculate();
+  </script>
+
+</body>
+</html>

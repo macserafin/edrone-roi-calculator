@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "roi-calc",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js"],
+      "port": 3002,
+      "cwd": "/Users/maciekserafin/Downloads/edrone-roi-calculator"
+    }
+  ]
+}
