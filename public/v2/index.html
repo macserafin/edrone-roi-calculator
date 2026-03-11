@@ -208,7 +208,7 @@
     }
     .hero-proof-label {
       font-size: 12px;
-      color: var(--gray-500);
+      color: var(--gray-400);
       font-weight: 500;
     }
 
@@ -293,12 +293,26 @@
     }
     .slider-row input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       background: var(--yellow);
       border-radius: 50%;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(255,255,140,0.4);
+    }
+    .slider-row input[type="range"]::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      background: var(--yellow);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(255,255,140,0.4);
+    }
+    .slider-row input[type="range"]::-moz-range-progress {
+      background: var(--yellow-dark);
+      height: 6px;
+      border-radius: 3px;
     }
     .slider-val {
       font-size: 14px;
@@ -575,9 +589,9 @@
     .browser-mockup img {
       width: 100%;
       display: block;
-      max-height: 420px;
+      height: 420px;
       object-fit: cover;
-      object-position: top left;
+      object-position: center 18%;
     }
 
     /* Feature highlights grid */
@@ -682,8 +696,56 @@
     .proof-stat:nth-child(2) .proof-stat-num { color: var(--yellow-dark); }
     .proof-stat-label {
       font-size: 12px;
-      color: var(--gray-500);
+      color: var(--gray-400);
       font-weight: 500;
+    }
+
+    /* ── CLOSING CTA ── */
+    .closing-cta {
+      padding: 72px 32px;
+      text-align: center;
+      background: var(--warm-white);
+    }
+    .closing-cta h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .closing-cta p {
+      font-size: 16px;
+      color: var(--gray-500);
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .closing-cta .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--yellow-text);
+      padding: 18px 40px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .closing-cta .cta-btn:hover {
+      background: var(--yellow-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,255,140,0.4);
+    }
+    .closing-cta .cta-btn svg { width: 16px; height: 16px; }
+    .closing-cta .cta-sub {
+      display: block;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--gray-400);
     }
 
     /* ── FOOTER ── */
@@ -811,7 +873,7 @@
   </div>
 
   <!-- RESULTS -->
-  <section class="results-wrap" id="results">
+  <section class="results-wrap" id="results" aria-live="polite" role="region" aria-label="Wyniki kalkulatora">
     <div class="results-card">
       <div class="result-left">
         <p class="result-eyebrow">Twój dodatkowy przychód</p>
@@ -939,6 +1001,17 @@
     </div>
   </section>
 
+  <!-- CLOSING CTA -->
+  <section class="closing-cta">
+    <h2>Gotowy, żeby odzyskać przychód?</h2>
+    <p>Dołącz do 1 000+ sklepów, które już generują dodatkowy przychód z edrone. Integracja w 5 minut.</p>
+    <a href="https://control.edrone.me/register" class="cta-btn" target="_blank" rel="noopener">
+      Zacznij za darmo
+      <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <span class="cta-sub">Bez karty kredytowej &middot; Bez zobowiązań &middot; Setup w 5 minut</span>
+  </section>
+
   <footer>
     <p>&copy; 2026 <a href="https://www.edrone.me/pl" target="_blank" rel="noopener">edrone</a> &middot; CRM i Marketing Automation dla e-commerce</p>
   </footer>
@@ -1051,6 +1124,32 @@
       }
       animFrame = requestAnimationFrame(tick);
     }
+
+    // ── UTM params forwarding ──
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+      const utmParams = new URLSearchParams();
+      utmKeys.forEach(k => { if (params.get(k)) utmParams.set(k, params.get(k)); });
+      if (utmParams.toString()) {
+        document.querySelectorAll('a[href*="control.edrone.me/register"]').forEach(a => {
+          const url = new URL(a.href);
+          utmParams.forEach((v, k) => url.searchParams.set(k, v));
+          a.href = url.toString();
+        });
+      }
+    })();
+
+    // ── Slider filled track ──
+    function updateSliderTrack() {
+      const min = parseInt(rangeEl.min);
+      const max = parseInt(rangeEl.max);
+      const val = parseInt(rangeEl.value);
+      const pct = ((val - min) / (max - min)) * 100;
+      rangeEl.style.background = `linear-gradient(to right, var(--yellow-dark) 0%, var(--yellow-dark) ${pct}%, var(--gray-200) ${pct}%, var(--gray-200) 100%)`;
+    }
+    rangeEl.addEventListener('input', updateSliderTrack);
+    updateSliderTrack();
 
     if (subscribersEl.value) calculate();
   </script>
