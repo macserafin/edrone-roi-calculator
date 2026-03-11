@@ -551,35 +551,37 @@
       margin: 0 auto 40px;
     }
     .logos img {
-      height: 26px;
+      height: 56px;
       width: auto;
-      filter: brightness(0) invert(1);
-      opacity: 0.35;
+      opacity: 0.85;
       transition: opacity 0.2s;
     }
-    .logos img:hover { opacity: 0.7; }
+    .logos img:hover { opacity: 1; }
 
-    .testimonial {
-      max-width: 560px;
+    .proof-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      max-width: 700px;
       margin: 0 auto;
       padding-top: 32px;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
-    .testimonial blockquote {
-      font-size: 16px;
-      font-style: italic;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-      margin-bottom: 16px;
+    .proof-stat {
+      text-align: center;
     }
-    .testimonial cite {
-      font-size: 14px;
-      font-style: normal;
-      color: rgba(255,255,255,0.4);
+    .proof-stat-number {
+      display: block;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--yellow);
+      letter-spacing: -1px;
     }
-    .testimonial cite strong {
-      color: rgba(255,255,255,0.6);
-      font-weight: 600;
+    .proof-stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
     }
 
     /* ── FEATURES ── */
@@ -821,21 +823,32 @@
 
   <!-- SOCIAL PROOF -->
   <section class="social-proof">
-    <p class="social-proof-label">Más de 1,000 tiendas en línea confían en edrone</p>
+    <p class="social-proof-label">Reconocido por usuarios en G2 como uno de los mejores productos de comercio</p>
     <div class="logos">
-      <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_rylko-1.png" alt="Ryłko" loading="lazy">
-      <img src="https://wp.edrone.me/wp-content/uploads/2022/08/mosquito.svg" alt="Mosquito" loading="lazy">
-      <img src="https://wp.edrone.me/wp-content/uploads/2022/08/organique.svg" alt="Organique" loading="lazy">
-      <img src="https://wp.edrone.me/wp-content/uploads/2022/08/o-bag.svg" alt="O bag" loading="lazy">
-      <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_bielenda-1.png" alt="Bielenda" loading="lazy">
-      <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_reporter-1.png" alt="Reporter" loading="lazy">
-      <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_abra-1.png" alt="Abra" loading="lazy">
-      <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci_ispot-1.png" alt="iSpot" loading="lazy">
-      <img src="https://wp.edrone.me/wp-content/uploads/2022/08/logotypy-klienci._swisspng-1.png" alt="Swiss" loading="lazy">
+      <img src="https://wp.edrone.me/wp-content/uploads/2024/09/E-Merchandising_BestUsability_Small-Business_Total.svg" alt="G2 Best Usability" loading="lazy">
+      <img src="https://wp.edrone.me/wp-content/uploads/2024/09/E-Merchandising_BestSupport_Small-Business_QualityOfSupport.svg" alt="G2 Best Support" loading="lazy">
+      <img src="https://wp.edrone.me/wp-content/uploads/2024/09/E-Merchandising_BestResults_Mid-Market_Total.svg" alt="G2 Best Results" loading="lazy">
+      <img src="https://wp.edrone.me/wp-content/uploads/2024/09/E-CommercePersonalization_MomentumLeader_Leader.svg" alt="G2 Momentum Leader" loading="lazy">
+      <img src="https://wp.edrone.me/wp-content/uploads/2024/09/E-CommercePersonalization_UsersMostLikelyToRecommend_Mid-Market_Nps.svg" alt="G2 Users Most Likely to Recommend" loading="lazy">
+      <img src="https://wp.edrone.me/wp-content/uploads/2024/09/E-Merchandising_BestRelationship_Small-Business_Total.svg" alt="G2 Best Relationship" loading="lazy">
     </div>
-    <div class="testimonial">
-      <blockquote>&ldquo;El retorno de inversión es más rápido que con la competencia. Yo mismo uso edrone en DAAG y obtengo excelentes resultados.&rdquo;</blockquote>
-      <cite><strong>Oskar Lipiński</strong> &middot; Co-owner &amp; E-commerce Director, DAAG</cite>
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <span class="proof-stat-number">4.9/5</span>
+        <span class="proof-stat-label">Rating en G2</span>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-stat-number">1,000+</span>
+        <span class="proof-stat-label">Tiendas activas</span>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-stat-number">99%</span>
+        <span class="proof-stat-label">Calidad de soporte</span>
+      </div>
+      <div class="proof-stat">
+        <span class="proof-stat-number">25+</span>
+        <span class="proof-stat-label">Integraciones nativas</span>
+      </div>
     </div>
   </section>
 
